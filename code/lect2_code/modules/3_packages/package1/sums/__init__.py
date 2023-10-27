@@ -1,1 +1,0 @@
-print('Init subpackage sums')

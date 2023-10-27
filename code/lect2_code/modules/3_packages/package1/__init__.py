@@ -1,1 +1,0 @@
-print('Init package 1')
