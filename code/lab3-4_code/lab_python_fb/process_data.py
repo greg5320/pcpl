@@ -5,7 +5,7 @@ from field import field
 from print_result import print_result
 from gen_random import gen_random
 
-path = "code/lab3-4_code/data_light.json"
+path = "//lab3-4_code//data_light.json"
 
 with open(path) as f:
     data = json.load(f)

@@ -8,7 +8,7 @@ const rl = readline.createInterface({
 function getValidNumber(prompt) {
   return new Promise((resolve) => {
     rl.question(prompt, (input) => {
-      const number = parseFloat(input);
+      let number = parseFloat(input);
       if (!isNaN(number)) {
         resolve(number);
       } else {
@@ -37,6 +37,36 @@ function getRoots(a, b, c) {
     return [];
   }
 }
+function getRoots1(a,b,c){
+  let result = []
+  let D = b*b - 4*a*c
+  if (D == 0.0){
+     let root = -b / (2.0*a)
+     let roota = Math.sqrt(root)
+     let rootb = Math.sqrt(root) * (-1)
+      result.push(roota)
+      result.push(rootb)
+      return [roota,rootb]
+  }
+  else if (D > 0.0){
+    let sqD = Math.sqrt(D)
+    let  root1 = (-b + sqD) / (2.0*a)
+    let  root2 = (-b - sqD) / (2.0*a)
+    let  root1a = Math.sqrt(root1)
+    let  root1b = Math.sqrt(root1) * (-1)
+    let  root2a = Math.sqrt(root2)
+    let  root2b = Math.sqrt(root2) * (-1)
+      result.push(root1a)
+      result.push(root1b)
+      result.push(root2a)
+      result.push(root2b)
+      return [root1a,root1b,root2a,root2b]
+  }
+  else{
+    return []
+  }
+
+}
 
 async function main() {
   let a, b, c;
@@ -53,7 +83,7 @@ async function main() {
     c = await getValidNumber('Введите коэффициент C: ');
   }
 
-  const roots = getRoots(a, b, c);
+  const roots = getRoots1(a, b, c);
 
   if (roots.length === 0) {
     console.log('Уравнение не имеет действительных корней.');
